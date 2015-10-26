@@ -1,0 +1,82 @@
+{
+  "words": [
+    {
+      "root" : "ноль",
+      "type" : "NUMERAL"
+    },
+    {
+      "root": "од",
+      "type" : "NUMERAL",
+      "endings": [
+        "ин",
+        "на",
+        "но",
+        "ну"
+      ]
+    },
+    {
+      "root": "дв",
+      "type" : "NUMERAL",
+      "endings": [
+        "а",
+        "е"
+      ]
+    },
+    {
+      "root": "тр",
+      "type" : "NUMERAL",
+      "endings": [
+        "и"
+      ]
+    },
+    {
+      "root": "четыр",
+      "type" : "NUMERAL",
+      "endings": [
+        "е"
+      ]
+    },
+    {
+      "root": "пят",
+      "type" : "NUMERAL",
+      "endings": [
+        "ь"
+      ]
+    },
+    {
+      "root": "шест",
+      "type" : "NUMERAL",
+      "endings": [
+        "ь"
+      ]
+    },
+    {
+      "root": "сем",
+      "type" : "NUMERAL",
+      "endings": [
+        "ь"
+      ]
+    },
+    {
+      "root": "восем",
+      "type" : "NUMERAL",
+      "endings": [
+        "ь"
+      ]
+    },
+    {
+      "root": "девя",
+      "type" : "NUMERAL",
+      "endings": [
+        "ть"
+      ]
+    },
+    {
+      "root": "десят",
+      "type" : "NUMERAL",
+      "endings": [
+        "ь"
+      ]
+    }
+  ]
+}

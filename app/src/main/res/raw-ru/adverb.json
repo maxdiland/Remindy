@@ -1,0 +1,20 @@
+{
+  "words": [
+    {
+      "root" : "сегодня",
+      "type" : "ADVERB"
+    },
+    {
+      "root" : "завтра",
+      "type" : "ADVERB"
+    },
+    {
+      "root" : "послезавтра",
+      "type" : "ADVERB"
+    },
+    {
+      "root" : "после",
+      "type" : "ADVERB"
+    }
+  ]
+}

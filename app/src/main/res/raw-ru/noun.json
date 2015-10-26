@@ -1,0 +1,108 @@
+{
+  "words": [
+    {
+      "root": "утр",
+      "endings" : [
+        "а", "ом" //Consider
+      ],
+      "type": "NOUN",
+      "meanings" : [
+        "TIME", "MORNING"
+      ]
+    },
+    {
+      "root": "вечер",
+      "endings" : [
+        "", "а", "ом"
+      ],
+      "type": "NOUN",
+      "meanings" : [
+        "TIME", "EVENING"
+      ]
+    },
+    {
+      "root": "минут",
+      "endings" : [
+        "", "а", "ы"
+      ],
+      "type": "NOUN",
+      "meanings" : [
+        "TIME", "MINUTE"
+      ]
+    },
+    {
+      "root": "час",
+      "endings" : [
+        "", "а", "ов"
+      ],
+      "type": "NOUN",
+      "meanings" : [
+        "TIME", "HOUR"
+      ]
+    },
+    {
+      "root": "день",
+      "type": "NOUN",
+      "meanings" : [
+        "TIME", "DAY"
+      ]
+    },
+    {
+      "root" : "дн",
+      "endings" : [
+        "я", "ей"
+      ],
+      "type" : "NOUN",
+      "meanings" : [
+        "TIME", "DAY"
+      ]
+    },
+    {
+      "root" : "недел",
+      "endings" : [
+        "я", "ю", "ь"
+      ],
+      "type" : "NOUN",
+      "meanings" : [
+        "TIME", "WEEK"
+      ]
+    },
+    {
+      "root" : "месяц",
+      "endings" : [
+        "", "а", "ев"
+      ],
+      "type" : "NOUN",
+      "meanings" : [
+        "TIME", "MONTH"
+      ]
+    },
+    {
+      "root" : "лет",
+      "type" : "NOUN",
+      "meanings" : [
+        "TIME", "YEAR"
+      ]
+    },
+    {
+      "root" : "год",
+      "endings" : [
+        "", "а"
+      ],
+      "type" : "NOUN",
+      "meanings" : [
+        "TIME", "YEAR"
+      ]
+    },
+    {
+      "root" : "напоминани",
+      "endings" : [
+        "е", "я"
+      ],
+      "type" : "NOUN",
+      "meanings" : [
+        "NOTIFICATION"
+      ]
+    }
+  ]
+}

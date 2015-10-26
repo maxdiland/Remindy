@@ -16,6 +16,7 @@
             android:layout_weight="80"
             android:layout_height="wrap_content"
             android:hint="Enter remind text"
+            android:id="@+id/etInput"
             />
 
         <Button
@@ -23,6 +24,7 @@
             android:layout_weight="20"
             android:layout_height="wrap_content"
             android:text="parse"
+            android:onClick="processInput"
             />
     </LinearLayout>
 
@@ -30,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:enabled="false"
+        android:id="@+id/etPreview"
         />
 
 </LinearLayout>
