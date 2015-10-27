@@ -5,14 +5,20 @@
       "endings" : [
         "ни", "нить"
       ],
-      "type" : "VERB"
+      "type" : "VERB",
+      "meanings" : [
+        "ACTION", "NOTIFY"
+      ]
     },
     {
       "root" : "созд",
       "endings" : [
         "ай", "ать"
       ],
-      "type" : "VERB"
+      "type" : "VERB",
+      "meanings" : [
+        "ACTION", "CREATE"
+      ]
     }
 
   ]

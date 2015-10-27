@@ -18,7 +18,8 @@ import java.util.TreeMap;
 public class RemindyApplication extends Application {
     private Map<String, Word> dictionaryBase = new TreeMap<>();
     private boolean dictionaryReady = false;
-    private int[] wordResources = {R.raw.adverb, R.raw.numeral, R.raw.pretext};
+    private int[] wordResources = {R.raw.adverb, R.raw.verb, R.raw.noun,
+            R.raw.numeral, R.raw.pretext};
 
     @Override
     public void onCreate() {

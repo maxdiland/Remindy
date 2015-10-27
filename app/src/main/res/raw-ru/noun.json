@@ -3,7 +3,7 @@
     {
       "root": "утр",
       "endings" : [
-        "а", "ом" //Consider
+        "а", "о"
       ],
       "type": "NOUN",
       "meanings" : [
@@ -13,7 +13,7 @@
     {
       "root": "вечер",
       "endings" : [
-        "", "а", "ом"
+        "", "а"
       ],
       "type": "NOUN",
       "meanings" : [
@@ -101,7 +101,7 @@
       ],
       "type" : "NOUN",
       "meanings" : [
-        "NOTIFICATION"
+        "ACTION", "NOTIFY"
       ]
     }
   ]

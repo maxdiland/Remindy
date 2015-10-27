@@ -1,20 +1,47 @@
 {
   "words": [
+
+    {
+      "root": "утром",
+      "type": "ADVERB",
+      "meanings" : [
+        "TIME", "MORNING"
+      ]
+    },
+    {
+      "root": "вечером",
+      "type": "ADVERB",
+      "meanings" : [
+        "TIME", "EVENING"
+      ]
+    },
     {
       "root" : "сегодня",
-      "type" : "ADVERB"
+      "type" : "ADVERB",
+      "meanings" : [
+        "DATE", "EVENING"
+      ]
     },
     {
       "root" : "завтра",
-      "type" : "ADVERB"
+      "type" : "ADVERB",
+      "meanings" : [
+        "DATE", "TOMORROW"
+      ]
     },
     {
       "root" : "послезавтра",
-      "type" : "ADVERB"
+      "type" : "ADVERB",
+      "meanings" : [
+        "DATE", "DAY_AFTER_TOMORROW"
+      ]
     },
     {
       "root" : "после",
-      "type" : "ADVERB"
+      "type" : "ADVERB",
+      "meanings" : [
+        "TIME", "AFTER"
+      ]
     }
   ]
 }

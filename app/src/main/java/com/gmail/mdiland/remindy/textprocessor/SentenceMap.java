@@ -30,16 +30,26 @@ public class SentenceMap {
         List<Word> wordSequence = new ArrayList<>(words.length);
 
         for (String wordAsText : words) {
+            boolean isNumber = isNumber(wordAsText);
             Word word = dictionary.get(wordAsText.toLowerCase());
             if (word == null) {
                 word = new Word();
-                word.setType(WordType.UNDEFINED);
+                word.setType(isNumber ? WordType.NUMERAL : WordType.UNDEFINED);
                 word.setRoot(wordAsText);
             }
             wordSequence.add(word);
         }
 
         this.wordSequence = wordSequence.toArray(new Word[wordSequence.size()]);
+    }
+
+    private boolean isNumber(String wordAsText) {
+        try{
+            Integer.parseInt(wordAsText);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     private String removeRedundantSpaces(String text) {
