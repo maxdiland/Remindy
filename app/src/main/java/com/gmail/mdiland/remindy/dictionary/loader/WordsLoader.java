@@ -30,7 +30,7 @@ public final class WordsLoader {
             WordBundle wordBundle = readWordBundle(resources, rawResource);
             List<Word> words = wordBundle.getWords();
             for (Word wordObject : words) {
-                for (String word : wordObject.getIndex()) {
+                for (String word : wordObject.getWordVariants()) {
                     dictionaryBase.put(word.toLowerCase(), wordObject);
                 }
             }

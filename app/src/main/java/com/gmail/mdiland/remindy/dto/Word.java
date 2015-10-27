@@ -11,11 +11,13 @@ import java.util.Set;
  */
 
 public class Word {
+    private static final long ONE_LONG = 1L;
+
     private String root;
     private List<String> endings;
     private WordType type;
     private Set<WordMeaning> meanings;
-    private Set<String> index;
+    private Integer numericValue;
 
     public String getRoot() {
         return root;
@@ -31,7 +33,6 @@ public class Word {
 
     public void setEndings(List<String> endings) {
         this.endings = endings;
-        buildIndex();
     }
 
     public Set<WordMeaning> getMeanings() {
@@ -42,30 +43,34 @@ public class Word {
         this.meanings = meanings;
     }
 
-    private void buildIndex() {
-        String rootLowerCase = root.toLowerCase();
-        Set<String> index = new HashSet<>();
-        for (String ending : endings) {
-            String endingLowerCase = ending.toLowerCase();
-            index.add( rootLowerCase + endingLowerCase );
-        }
-        this.index = index;
-    }
-
-    public Collection<String> getIndex() {
-        if (index != null) {
-            return Collections.unmodifiableCollection(index);
-        } else {
-            return Collections.singleton(root);
-        }
-    }
-
     public WordType getType() {
         return type;
     }
 
     public void setType(WordType type) {
         this.type = type;
+    }
+
+    public Integer getNumericValue() {
+        return numericValue;
+    }
+
+    public void setNumericValue(Integer numericValue) {
+        this.numericValue = numericValue;
+    }
+
+    public Set<String> getWordVariants() {
+        String rootLowerCase = root.toLowerCase();
+        if (endings == null) {
+            return Collections.singleton(rootLowerCase);
+        }
+
+        Set<String> index = new HashSet<>(endings.size(), ONE_LONG);
+        for (String ending : endings) {
+            String endingLowerCase = ending.toLowerCase();
+            index.add( rootLowerCase + endingLowerCase );
+        }
+        return index;
     }
 
     @Override
@@ -78,6 +83,6 @@ public class Word {
     }
 
     private boolean equalsCharSequence(CharSequence that) {
-        return index.contains( that.toString().toLowerCase() );
+        return getWordVariants().contains( that.toString().toLowerCase() );
     }
 }
