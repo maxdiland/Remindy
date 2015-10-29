@@ -1,22 +1,39 @@
 package com.gmail.mdiland.remindy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.Touch;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.gmail.mdiland.remindy.application.RemindyApplication;
+import com.gmail.mdiland.remindy.gesture.MyGestureDetector;
 import com.gmail.mdiland.remindy.textprocessor.impl.SimpleReminderTextParser;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
 
     private EditText etPreview;
     private EditText etInput;
     private Button btnParse;
+    private Button btnVoice;
+
+    private boolean speechRecognitionInProgress;
+    SpeechRecognizer speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+
+    {
+        speechRecognizer.setRecognitionListener(new MyRecognitionListener());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void initUi() {
         etPreview = (EditText) findViewById(R.id.etPreview);
         etInput = (EditText) findViewById(R.id.etInput);
+        btnParse = (Button) findViewById(R.id.btnParse);
+        btnVoice = (Button) findViewById(R.id.btnVoice);
     }
 
     public void processInput(View view) {
@@ -52,18 +71,26 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         textParser.process(inputText);
     }
 
-    public void recognizeSpeech() {
-        SpeechRecognizer speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+    public void recognizeSpeech(View view) {
+        if (speechRecognitionInProgress) {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            speechRecognizer.startListening(intent);
+        } else {
+            speechRecognizer.stopListening();
+        }
+        speechRecognitionInProgress = !speechRecognitionInProgress;
 
     }
 
-    @Override
-    public boolean onTouch(View view, MotionEvent event) {
+//    @Override
+//    public boolean onTouch(View view, MotionEvent event) {
 //        if (view == btnParse) {
-//            event.getButtonState()
+//            gestureDetector.onTouchEvent(event);
+//            return true;
 //        }
-        return false;
-    }
+//        return false;
+//    }
 
     private class MyRecognitionListener implements RecognitionListener {
 
@@ -74,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         @Override
         public void onBeginningOfSpeech() {
-
+            Toast.makeText(MainActivity.this, "Listening", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -94,11 +121,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         @Override
         public void onError(int i) {
-
+            Toast.makeText(MainActivity.this, "Recognition error", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onResults(Bundle bundle) {
+            List<String> stringArrayList =
+                    bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+            Toast.makeText(MainActivity.this, "Results", Toast.LENGTH_SHORT).show();
 
         }
 

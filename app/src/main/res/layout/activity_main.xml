@@ -24,9 +24,17 @@
             android:layout_weight="20"
             android:layout_height="wrap_content"
             android:text="parse"
+            android:id="@+id/btnParse"
             android:onClick="processInput"
             />
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnVoice"
+        android:text="Recognize voice"
+        android:onClick="recognizeSpeech"
+        />
 
     <EditText
         android:layout_width="match_parent"
