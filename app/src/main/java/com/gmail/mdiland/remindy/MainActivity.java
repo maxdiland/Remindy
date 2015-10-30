@@ -17,11 +17,14 @@ import android.widget.Toast;
 import com.gmail.mdiland.remindy.application.RemindyApplication;
 import com.gmail.mdiland.remindy.gesture.MyGestureDetector;
 import com.gmail.mdiland.remindy.textprocessor.impl.SimpleReminderTextParser;
+import com.gmail.mdiland.remindy.voice.recognition.VoiceRecognitionResult;
+import com.gmail.mdiland.remindy.voice.recognition.listener.MyRecognitionListener;
+import com.gmail.mdiland.remindy.voice.recognition.listener.OnSpeechRecognitionResultListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnSpeechRecognitionResultListener {
 
     private EditText etPreview;
     private EditText etInput;
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     SpeechRecognizer speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
     {
-        speechRecognizer.setRecognitionListener(new MyRecognitionListener());
+        speechRecognizer.setRecognitionListener(new MyRecognitionListener(this));
     }
 
     @Override
@@ -75,12 +78,27 @@ public class MainActivity extends AppCompatActivity {
         if (speechRecognitionInProgress) {
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+//            intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 1000000);
+//            intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 2000000);
+//            intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 10000000);
             speechRecognizer.startListening(intent);
         } else {
             speechRecognizer.stopListening();
         }
         speechRecognitionInProgress = !speechRecognitionInProgress;
 
+    }
+
+    @Override
+    public void onSpeechRecognitionResult(VoiceRecognitionResult result) {
+        StringBuilder sb = new StringBuilder();
+        List<String> results = result.getResults();
+        float[] resultScores = result.getResultScores();
+
+        for (int i = 0; i < results.size(); i++) {
+            sb.append(results.get(i)).append("   ").append(resultScores[i]).append("\n");
+        }
+        etPreview.setText(sb);
     }
 
 //    @Override
@@ -92,54 +110,4 @@ public class MainActivity extends AppCompatActivity {
 //        return false;
 //    }
 
-    private class MyRecognitionListener implements RecognitionListener {
-
-        @Override
-        public void onReadyForSpeech(Bundle bundle) {
-
-        }
-
-        @Override
-        public void onBeginningOfSpeech() {
-            Toast.makeText(MainActivity.this, "Listening", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onRmsChanged(float v) {
-
-        }
-
-        @Override
-        public void onBufferReceived(byte[] bytes) {
-
-        }
-
-        @Override
-        public void onEndOfSpeech() {
-
-        }
-
-        @Override
-        public void onError(int i) {
-            Toast.makeText(MainActivity.this, "Recognition error", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onResults(Bundle bundle) {
-            List<String> stringArrayList =
-                    bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-            Toast.makeText(MainActivity.this, "Results", Toast.LENGTH_SHORT).show();
-
-        }
-
-        @Override
-        public void onPartialResults(Bundle bundle) {
-
-        }
-
-        @Override
-        public void onEvent(int i, Bundle bundle) {
-
-        }
-    }
 }
